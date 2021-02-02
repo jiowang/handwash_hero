@@ -14,5 +14,15 @@
 	</div>
 
 	<script type="text/javascript" src="js/scripts.js" ></script>
+
+	<div id=output></div>
+
+	<script>
+  		var output = document.getElementById('output');
+  		Leap.loop(function (frame) {
+    	output.innerHTML = 'Frame: ' + frame.id;
+  		});
+	</script>
+
 </body>
 </html>
