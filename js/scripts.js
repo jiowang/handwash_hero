@@ -90,7 +90,7 @@ svg.selectAll("text")
 
 var fresh = true 
 
-Leap.loop(host = 'ubuntu1804-002.student.cs.uwaterloo.ca', function(frame) {
+Leap.loop(host = 'ubuntu1804-002.student.cs.uwaterloo.ca', host = 6437, function(frame) {
 
 	if (frame.pointables.length > 0){
 		console.log(frame)
