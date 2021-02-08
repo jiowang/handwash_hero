@@ -64,8 +64,8 @@ function isMin(value, min) {
 
 
 var introText = ["Close hand into fist to return to the intro page.",
-				 "Welcome to Handwash Hero Leap Motion. Hold your hands over the Leap to get started.",
-				 "Hint: Explore the boundries of what the Leap can see to calibrate the visualization."]
+				 "Handwash Hero Project. Hold your hands over the Leap to get started.",
+				 "Please start washing your hands and make a fist to return to this page."]
 
 svg.selectAll("text")
 	.data(introText)
