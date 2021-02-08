@@ -9,7 +9,7 @@ if ((typeof(WebSocket) == 'undefined') &&
 // Create the socket with event handlers
 function connectToWebSocket() {
   // Create and open the socket
-  ws = new WebSocket("ws://localhost:6437/v4.json");
+  ws = new WebSocket("ws://ubuntu1804-002.student.cs.uwaterloo.ca:6437/v4.json");
 
   // On successful connection
   ws.onopen = function(event) {

@@ -198,7 +198,8 @@
         host : 'ubuntu1804-002.student.cs.uwaterloo.ca'
         //host : '127.0.0.1',
         scheme: this.getScheme(),
-        port: this.getPort(),
+        port: 6437
+        // port: this.getPort(),
         background: false,
         optimizeHMD: false,
         requestProtocolVersion: BaseConnection.defaultProtocolVersion
