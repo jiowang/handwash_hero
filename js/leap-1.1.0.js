@@ -195,9 +195,11 @@
     
     var BaseConnection = module.exports = function(opts) {
       this.opts = Object.assign({
-        host : '127.0.0.1',
+        host : '129.97.167.34',
+        //host : '127.0.0.1',
         scheme: this.getScheme(),
-        port: this.getPort(),
+        port : 6437,
+        //port: this.getPort(),
         background: false,
         optimizeHMD: false,
         requestProtocolVersion: BaseConnection.defaultProtocolVersion
