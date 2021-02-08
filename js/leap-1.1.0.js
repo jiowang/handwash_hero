@@ -195,7 +195,7 @@
     
     var BaseConnection = module.exports = function(opts) {
       this.opts = Object.assign({
-        host : 'ubuntu1804-002.student.cs.uwaterloo.ca'
+        host : 'ubuntu1804-002.student.cs.uwaterloo.ca',
         //host : '127.0.0.1',
         scheme: this.getScheme(),
         port: this.getPort(),
