@@ -110,41 +110,7 @@ Leap.loop( function(frame) {
 				var x = finger.tipPosition[0], //Grab the position of fingertips
 					y = finger.tipPosition[1],
 					z = finger.tipPosition[2];
-				// start
-				var currentPalmPos;
-				if (frame.hands.length) {
-					currentPalmPos = frame.hands[0].palmPosition;
-					console.log(currentPalmPos)
-				} 
-				var xPalmRange = xRange.slice()
-				var yPalmRange = yRange.slice()
-				var zPalmRange = zRange.slice()
 
-				xPalmRange[1] = isMax(currentPalmPos[0], xPalmRange[1])
-				yPalmRange[1] = isMax(currentPalmPos[0], yPalmRange[1])
-				zPalmRange[1] = isMax(currentPalmPos[0], zPalmRange[1])
-
-				xPalmRange[0] = isMin(currentPalmPos[0], xPalmRange[0])
-				yPalmRange[0] = isMin(currentPalmPos[0], yPalmRange[0])
-				zPalmRange[0] = isMin(currentPalmPos[0], zPalmRange[0])
-
-				xPalmScale = d3.scale.linear()
-						    .domain(xPalmRange)
-				            .range([0, width])
-	
-				yPalmScale = d3.scale.linear()
-							.domain(yPalmRange)
-							.range([height, 0])
-				
-				zPalmScale = d3.scale.linear()
-							.domain(zPalmRange)
-							.range([0, 40])
-				
-				posPalmX = xPalmScale(currentPalmPos[0]); //Run the raw xyz values through their scaling functions
-				posPalmY = yPalmScale(currentPalmPos[1]);
-				posPalmZ = zPalmScale(currentPalmPos[2]);
-
-				// end
 				xRange[1] = isMax(x, xRange[1]) //Update the maximum range
 				yRange[1] = isMax(y, yRange[1])
 				zRange[1] = isMax(z, zRange[1])
@@ -160,9 +126,7 @@ Leap.loop( function(frame) {
 				posX = xScale(x); //Run the raw xyz values through their scaling functions
 				posY = yScale(y);
 				posZ = zScale(z);
-				//start
-				position(posPalmX, posPalmY, posPalmZ, 0)
-				//end
+				
 				position(posX, posY, posZ,i);
 			} //Closes if finger extended statement
 		}//Closes for loop
