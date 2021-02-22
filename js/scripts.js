@@ -95,6 +95,10 @@ Leap.loop( function(frame) {
 	if (frame.pointables.length > 0){
 		console.log(frame)
 
+		for (var h = 0; h < frame.hands.length; h++) {
+			output.innerHTML = 'Palm Normal #' + h + ': '+ frame.hands[h].palmNormal;
+		}
+
 		if (fresh){
 			d3.select("svg").style("background", "white") //Change the background color
 			fresh = false
