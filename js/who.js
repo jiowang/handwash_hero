@@ -11,9 +11,13 @@ class Steps {
     }
 }
 
+// Main DOM element to display the page
 var stepOutput = document.getElementById('steps');
+
+
 var img = "<img src = './img/step3.jpg' width=500 height=500>";
 
+// WHO step objects initialized
 let step3 = new Steps(6000, 70, 150);
 let step4 = new Steps(6000, 70);
 let step5 = new Steps(6000, 70);
@@ -23,6 +27,7 @@ let step8 = new Steps(6000, 70);
 
 let step = [null, null, null, step3, step4, step5, step6, step7, step8];
 
+// Variables for timers and timer flags
 let timeout = 60000;
 let startTime = new easytimer.Timer();
 let startTimeFlag = false;
@@ -44,7 +49,7 @@ function step3State(frame) {
     Math.abs(frame.hands[0].palmPosition[2] - frame.hands[1].palmPosition[2]) <  step3.distance
 }
 
-// Determins if the palms are far away to pause step 3 if so
+// Determins if the palms are far away to pause step 3 if the case
 function step3far(frame) {
     return frame.hands.length == 2 && 
     (Math.abs(frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0]) >  step3.far ||
@@ -58,10 +63,12 @@ Leap.loop({enableGestures: true}, function(frame) {
     if (frame.hands.length > 2) {
         stepOutput.innerHTML = 'More than two hands detected. Only one user allowed';
     }
+    // Step 3
     if (step[i] === step3) {
         if (step[i].finish) {
             i++;
         }
+        // Text displays
         if (delayTimeFlag) {
             stepOutput.innerHTML = 'Step 3 started.' + '<br>' + img + '<br>';
         }
@@ -76,6 +83,7 @@ Leap.loop({enableGestures: true}, function(frame) {
             delayTime.start();
             stepOutput.innerHTML += 'Resuming...';
         }
+        // Check if palms are close or not
         if (step3State(frame)) {
             step[i].start = true;
             if (!delayTimeFlag) {
@@ -89,8 +97,8 @@ Leap.loop({enableGestures: true}, function(frame) {
             delayTime.reset();
             stepOutput.innerHTML = '<br>' + 'Please put your hands together to wash your palms' + '<br>';
         }
-       // }
     }
+    // Step 4
     if (step[i] === step4) {
         stepOutput.innerHTML = 'Done. Implementation of other steps working in progress...';
     }
