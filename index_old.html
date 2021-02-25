@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Handwash Hero</title>
+	<link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+	<script type="text/javascript" src="./js/d3.min.js"></script>
+	<script src="./js/leap-1.1.0.js"></script>
+	<script src="./node_modules/@mediapipe/hands/hands.js"></script>
+<!-- 	// <script type="text/javascript" src="leap.min.js"></script> -->
+
+	<div id = "container">
+	</div>
+
+	<script type="text/javascript" src="js/scripts.js" ></script>
+
+	<div id=output></div>
+
+	<script>
+  		var output = document.getElementById('output');
+  		Leap.loop(function (frame) {
+    	output.innerHTML = 'Frame: ' + frame.id;
+		for (var h = 0; h < frame.hands.length; h++) {
+			output.innerHTML += "<br/>" + 'Palm Pos #' + h + ': '+ frame.hands[h].palmPosition;
+			output.innerHTML += "<br/>" + 'Palm Normal #' + h + ': '+ frame.hands[h].palmNormal;
+		}
+  		});
+	</script>
+
+</body>
+</html>
