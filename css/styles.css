@@ -23,6 +23,8 @@ svg {
 
 #steps {
     text-align: center;
+    font-size: larger;
+    font-weight: bolder;
     z-index: 2;
 }
 

@@ -201,7 +201,7 @@ function introText() {
 }
 
 function stepText(stepNum) {
-    stepOutput.innerHTML = 'Step ' + stepNum + ' started.' + '<br>' + step[stepNum].img + '<br>';
+    stepOutput.innerHTML = 'Step ' + stepNum + ' started.' + '<br><br><br>' + step[stepNum].img + '<br>';
 }
 
 function timeRemainText(stepNum) {
@@ -216,7 +216,7 @@ function farHandsText() {
 }
 
 function resumeText() {
-    stepOutput.innerHTML += 'Resuming...';
+    stepOutput.innerHTML += '<br>Resuming...';
 }
 
 function finishText() {
