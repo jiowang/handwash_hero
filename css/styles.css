@@ -12,3 +12,20 @@ svg {
 #container {
 	text-align: center;
 }
+
+#box {
+    position:absolute;
+    margin-top: 5%;
+    width : 80%;
+    height: 80%;
+    z-index: 1;
+}
+
+#steps {
+    text-align: center;
+    z-index: 2;
+}
+
+.progress {
+    margin: auto;
+}
