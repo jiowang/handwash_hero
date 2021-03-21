@@ -1,17 +1,12 @@
 // Step function definitions
-function isPalmsTogether(frame) {
-    return frame.hands.length == 2 && 
-    Math.abs(frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0]) <  step3.distance &&
-    Math.abs(frame.hands[0].palmPosition[1] - frame.hands[1].palmPosition[1]) <  step3.distance &&
-    Math.abs(frame.hands[0].palmPosition[2] - frame.hands[1].palmPosition[2]) <  step3.distance
-}
 
 // Step 3 //
 // Determins if the palms are together to start step 3
 function step3State(frame) {
-    return isPalmsTogether(frame) &&
-    (Math.abs(frame.hands[0].palmVelocity[0] > 100) || Math.abs(frame.hands[0].palmVelocity[1] > 100) || Math.abs(frame.hands[0].palmVelocity[2] > 100)) &&
-    (Math.abs(frame.hands[1].palmVelocity[0] > 100) || Math.abs(frame.hands[1].palmVelocity[1] > 100) || Math.abs(frame.hands[1].palmVelocity[2] > 100))
+    return frame.hands.length == 2 && 
+    Math.abs(frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0]) <  step3.distance &&
+    Math.abs(frame.hands[0].palmPosition[1] - frame.hands[1].palmPosition[1]) <  step3.distance &&
+    Math.abs(frame.hands[0].palmPosition[2] - frame.hands[1].palmPosition[2]) <  step3.distance
 }
 
 // Determins if the palms are far away to pause step 3 if the case
@@ -25,70 +20,27 @@ function step3far(frame) {
 // Step 4 //
 // Determins if the palms are together to start step 4
 function step4State(frame) {
-    return isPalmsTogether(frame) && frame.hands.length == 2 &&
-    ((frame.hands[0].palmNormal[0] >= 0 && frame.hands[1].palmNormal[0] >= 0 &&
-    frame.hands[0].palmNormal[1] >= 0 && frame.hands[1].palmNormal[1] >= 0 &&
-    frame.hands[0].palmNormal[2] >= 0 && frame.hands[1].palmNormal[2] >= 0) ||
-    (frame.hands[0].palmNormal[0] >= 0 && frame.hands[1].palmNormal[0] >= 0 &&
-    frame.hands[0].palmNormal[1] >= 0 && frame.hands[1].palmNormal[1] >= 0 &&
-    frame.hands[0].palmNormal[2] < 0 && frame.hands[1].palmNormal[2] < 0) ||
-    (frame.hands[0].palmNormal[0] >= 0 && frame.hands[1].palmNormal[0] >= 0 &&
-    frame.hands[0].palmNormal[1] < 0 && frame.hands[1].palmNormal[1] < 0 &&
-    frame.hands[0].palmNormal[2] >= 0 && frame.hands[1].palmNormal[2] >= 0) ||
-    (frame.hands[0].palmNormal[0] >= 0 && frame.hands[1].palmNormal[0] >= 0 &&
-    frame.hands[0].palmNormal[1] < 0 && frame.hands[1].palmNormal[1] < 0 &&
-    frame.hands[0].palmNormal[2] < 0 && frame.hands[1].palmNormal[2] < 0) ||
-    (frame.hands[0].palmNormal[0] < 0 && frame.hands[1].palmNormal[0] < 0 &&
-    frame.hands[0].palmNormal[1] >= 0 && frame.hands[1].palmNormal[1] >= 0 &&
-    frame.hands[0].palmNormal[2] >= 0 && frame.hands[1].palmNormal[2] >= 0) ||
-    (frame.hands[0].palmNormal[0] < 0 && frame.hands[1].palmNormal[0] < 0 &&
-    frame.hands[0].palmNormal[1] >= 0 && frame.hands[1].palmNormal[1] >= 0 &&
-    frame.hands[0].palmNormal[2] < 0 && frame.hands[1].palmNormal[2] < 0) ||
-    (frame.hands[0].palmNormal[0] < 0 && frame.hands[1].palmNormal[0] < 0 &&
-    frame.hands[0].palmNormal[1] < 0 && frame.hands[1].palmNormal[1] < 0 &&
-    frame.hands[0].palmNormal[2] >= 0 && frame.hands[1].palmNormal[2] >= 0) ||
-    (frame.hands[0].palmNormal[0] < 0 && frame.hands[1].palmNormal[0] < 0 &&
-    frame.hands[0].palmNormal[1] < 0 && frame.hands[1].palmNormal[1] < 0 &&
-    frame.hands[0].palmNormal[2] < 0 && frame.hands[1].palmNormal[2] < 0)) &&
-    (Math.abs(frame.hands[0].palmVelocity[0] > 100) || Math.abs(frame.hands[0].palmVelocity[1] > 100) || Math.abs(frame.hands[0].palmVelocity[2] > 100)) &&
-    (Math.abs(frame.hands[1].palmVelocity[0] > 100) || Math.abs(frame.hands[1].palmVelocity[1] > 100) || Math.abs(frame.hands[1].palmVelocity[2] > 100))
+    return frame.hands.length == 2 && 
+    Math.abs(frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0]) <  step3.distance &&
+    Math.abs(frame.hands[0].palmPosition[1] - frame.hands[1].palmPosition[1]) <  step3.distance &&
+    Math.abs(frame.hands[0].palmPosition[2] - frame.hands[1].palmPosition[2]) <  step3.distance
 }
 
 // Determins if the palms are far away to pause step 4 if the case
 function step4far(frame) {
-    return step3far(frame)
+    return frame.hands.length == 2 && 
+    (Math.abs(frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0]) >  step3.far ||
+    Math.abs(frame.hands[0].palmPosition[1] - frame.hands[1].palmPosition[1]) >  step3.far ||
+    Math.abs(frame.hands[0].palmPosition[2] - frame.hands[1].palmPosition[2]) >  step3.far)
 }
 
 // Step 5 //
 // Determins if the palms are together to start step 5
 function step5State(frame) {
-    return isPalmsTogether(frame) && frame.hands.length == 2 &&
-    !((frame.hands[0].palmNormal[0] >= 0 && frame.hands[1].palmNormal[0] >= 0 &&
-    frame.hands[0].palmNormal[1] >= 0 && frame.hands[1].palmNormal[1] >= 0 &&
-    frame.hands[0].palmNormal[2] >= 0 && frame.hands[1].palmNormal[2] >= 0) ||
-    (frame.hands[0].palmNormal[0] >= 0 && frame.hands[1].palmNormal[0] >= 0 &&
-    frame.hands[0].palmNormal[1] >= 0 && frame.hands[1].palmNormal[1] >= 0 &&
-    frame.hands[0].palmNormal[2] < 0 && frame.hands[1].palmNormal[2] < 0) ||
-    (frame.hands[0].palmNormal[0] >= 0 && frame.hands[1].palmNormal[0] >= 0 &&
-    frame.hands[0].palmNormal[1] < 0 && frame.hands[1].palmNormal[1] < 0 &&
-    frame.hands[0].palmNormal[2] >= 0 && frame.hands[1].palmNormal[2] >= 0) ||
-    (frame.hands[0].palmNormal[0] >= 0 && frame.hands[1].palmNormal[0] >= 0 &&
-    frame.hands[0].palmNormal[1] < 0 && frame.hands[1].palmNormal[1] < 0 &&
-    frame.hands[0].palmNormal[2] < 0 && frame.hands[1].palmNormal[2] < 0) ||
-    (frame.hands[0].palmNormal[0] < 0 && frame.hands[1].palmNormal[0] < 0 &&
-    frame.hands[0].palmNormal[1] >= 0 && frame.hands[1].palmNormal[1] >= 0 &&
-    frame.hands[0].palmNormal[2] >= 0 && frame.hands[1].palmNormal[2] >= 0) ||
-    (frame.hands[0].palmNormal[0] < 0 && frame.hands[1].palmNormal[0] < 0 &&
-    frame.hands[0].palmNormal[1] >= 0 && frame.hands[1].palmNormal[1] >= 0 &&
-    frame.hands[0].palmNormal[2] < 0 && frame.hands[1].palmNormal[2] < 0) ||
-    (frame.hands[0].palmNormal[0] < 0 && frame.hands[1].palmNormal[0] < 0 &&
-    frame.hands[0].palmNormal[1] < 0 && frame.hands[1].palmNormal[1] < 0 &&
-    frame.hands[0].palmNormal[2] >= 0 && frame.hands[1].palmNormal[2] >= 0) ||
-    (frame.hands[0].palmNormal[0] < 0 && frame.hands[1].palmNormal[0] < 0 &&
-    frame.hands[0].palmNormal[1] < 0 && frame.hands[1].palmNormal[1] < 0 &&
-    frame.hands[0].palmNormal[2] < 0 && frame.hands[1].palmNormal[2] < 0)) &&
-    (Math.abs(frame.hands[0].palmVelocity[0] > 100) || Math.abs(frame.hands[0].palmVelocity[1] > 100) || Math.abs(frame.hands[0].palmVelocity[2] > 100)) &&
-    (Math.abs(frame.hands[1].palmVelocity[0] > 100) || Math.abs(frame.hands[1].palmVelocity[1] > 100) || Math.abs(frame.hands[1].palmVelocity[2] > 100))
+    return frame.hands.length == 2 && 
+    Math.abs(frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0]) <  step3.distance &&
+    Math.abs(frame.hands[0].palmPosition[1] - frame.hands[1].palmPosition[1]) <  step3.distance &&
+    Math.abs(frame.hands[0].palmPosition[2] - frame.hands[1].palmPosition[2]) <  step3.distance
 }
 
 // Determins if the palms are far away to pause step 5 if the case
@@ -103,12 +55,9 @@ function step5far(frame) {
 // Determins if the palms are together to start step 6
 function step6State(frame) {
     return frame.hands.length == 2 && 
-    Math.abs(frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0]) <  step6.distance &&
-    Math.abs(frame.hands[0].palmPosition[1] - frame.hands[1].palmPosition[1]) <  step6.distance &&
-    Math.abs(frame.hands[0].palmPosition[2] - frame.hands[1].palmPosition[2]) <  step6.distance &&
-    (Math.abs(frame.hands[0].palmVelocity[0] > 100) || Math.abs(frame.hands[0].palmVelocity[1] > 100) || Math.abs(frame.hands[0].palmVelocity[2] > 100)) &&
-    (Math.abs(frame.hands[1].palmVelocity[0] > 100) || Math.abs(frame.hands[1].palmVelocity[1] > 100) || Math.abs(frame.hands[1].palmVelocity[2] > 100))
-
+    Math.abs(frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0]) <  step3.distance &&
+    Math.abs(frame.hands[0].palmPosition[1] - frame.hands[1].palmPosition[1]) <  step3.distance &&
+    Math.abs(frame.hands[0].palmPosition[2] - frame.hands[1].palmPosition[2]) <  step3.distance
 }
 
 // Determins if the palms are far away to pause step 6 if the case
@@ -123,21 +72,9 @@ function step6far(frame) {
 // Determins if the palms are together to start step 7
 function step7State(frame) {
     return frame.hands.length == 2 && 
-    Math.abs(frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0]) <  step7.distance &&
-    Math.abs(frame.hands[0].palmPosition[1] - frame.hands[1].palmPosition[1]) <  step7.distance &&
-    Math.abs(frame.hands[0].palmPosition[2] - frame.hands[1].palmPosition[2]) <  step7.distance &&
-    (Math.abs(frame.hands[0].palmVelocity[0] > 30) || Math.abs(frame.hands[0].palmVelocity[1] > 100) || Math.abs(frame.hands[0].palmVelocity[2] > 30)) &&
-    (Math.abs(frame.hands[1].palmVelocity[0] > 30) || Math.abs(frame.hands[1].palmVelocity[1] > 100) || Math.abs(frame.hands[1].palmVelocity[2] > 30)) &&
-    ((frame.hands[0].fingers.length > 3 &&
-    frame.hands[0].fingers[0].extended &&
-    frame.hands[0].fingers[1].extended &&
-    frame.hands[0].fingers[2].extended &&
-    frame.hands[0].fingers[3].extended) || 
-    (frame.hands[1].fingers.length > 3 &&
-    frame.hands[1].fingers[0].extended &&
-    frame.hands[1].fingers[1].extended &&
-    frame.hands[1].fingers[2].extended &&
-    frame.hands[1].fingers[3].extended))
+    Math.abs(frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0]) <  step3.distance &&
+    Math.abs(frame.hands[0].palmPosition[1] - frame.hands[1].palmPosition[1]) <  step3.distance &&
+    Math.abs(frame.hands[0].palmPosition[2] - frame.hands[1].palmPosition[2]) <  step3.distance
 }
 
 // Determins if the palms are far away to pause step 7 if the case
@@ -152,23 +89,9 @@ function step7far(frame) {
 // Determins if the palms are together to start step 8
 function step8State(frame) {
     return frame.hands.length == 2 && 
-    Math.abs(frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0]) <  step8.distance &&
-    Math.abs(frame.hands[0].palmPosition[1] - frame.hands[1].palmPosition[1]) <  step8.distance &&
-    Math.abs(frame.hands[0].palmPosition[2] - frame.hands[1].palmPosition[2]) <  step8.distance &&
-    ((Math.abs(frame.hands[0].palmVelocity[0] > 60) || Math.abs(frame.hands[0].palmVelocity[1] > 60) || Math.abs(frame.hands[0].palmVelocity[2] > 60)) ||
-    (Math.abs(frame.hands[1].palmVelocity[0] > 60) || Math.abs(frame.hands[1].palmVelocity[1] > 60) || Math.abs(frame.hands[1].palmVelocity[2] > 60))) &&
-    ((frame.hands[0].fingers.length > 4 &&
-    frame.hands[0].fingers[0].extended &&
-    frame.hands[0].fingers[1].extended &&
-    frame.hands[0].fingers[2].extended &&
-    frame.hands[0].fingers[3].extended &&
-    frame.hands[0].fingers[4].extended) || 
-    (frame.hands[1].fingers.length > 4 &&
-    frame.hands[1].fingers[0].extended &&
-    frame.hands[1].fingers[1].extended &&
-    frame.hands[1].fingers[2].extended &&
-    frame.hands[1].fingers[3].extended &&
-    frame.hands[1].fingers[4].extended))
+    Math.abs(frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0]) <  step3.distance &&
+    Math.abs(frame.hands[0].palmPosition[1] - frame.hands[1].palmPosition[1]) <  step3.distance &&
+    Math.abs(frame.hands[0].palmPosition[2] - frame.hands[1].palmPosition[2]) <  step3.distance
 }
 
 // Determins if the palms are far away to pause step 8 if the case
@@ -183,26 +106,9 @@ function step8far(frame) {
 // Determins if the palms are together to start step 8
 function step9State(frame) {
     return frame.hands.length == 2 && 
-    Math.abs(frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0]) <  step9.distance &&
-    Math.abs(frame.hands[0].palmPosition[1] - frame.hands[1].palmPosition[1]) <  step9.distance &&
-    Math.abs(frame.hands[0].palmPosition[2] - frame.hands[1].palmPosition[2]) <  step9.distance &&
-    Math.abs(frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0]) >  20 &&
-    Math.abs(frame.hands[0].palmPosition[1] - frame.hands[1].palmPosition[1]) >  20 &&
-    Math.abs(frame.hands[0].palmPosition[2] - frame.hands[1].palmPosition[2]) >  20 &&
-    ((Math.abs(frame.hands[0].palmVelocity[0] > 60) || Math.abs(frame.hands[0].palmVelocity[1] > 60) || Math.abs(frame.hands[0].palmVelocity[2] > 60)) ||
-    (Math.abs(frame.hands[1].palmVelocity[0] > 60) || Math.abs(frame.hands[1].palmVelocity[1] > 60) || Math.abs(frame.hands[1].palmVelocity[2] > 60))) &&
-    ((frame.hands[0].fingers.length > 4 &&
-    frame.hands[0].fingers[0].extended &&
-    frame.hands[0].fingers[1].extended &&
-    frame.hands[0].fingers[2].extended &&
-    frame.hands[0].fingers[3].extended &&
-    frame.hands[0].fingers[4].extended) || 
-    (frame.hands[1].fingers.length > 4 &&
-    frame.hands[1].fingers[0].extended &&
-    frame.hands[1].fingers[1].extended &&
-    frame.hands[1].fingers[2].extended &&
-    frame.hands[1].fingers[3].extended &&
-    frame.hands[1].fingers[4].extended))
+    Math.abs(frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0]) <  step3.distance &&
+    Math.abs(frame.hands[0].palmPosition[1] - frame.hands[1].palmPosition[1]) <  step3.distance &&
+    Math.abs(frame.hands[0].palmPosition[2] - frame.hands[1].palmPosition[2]) <  step3.distance
 }
 
 // Determins if the palms are far away to pause step 8 if the case
@@ -243,10 +149,10 @@ let step2 = new Steps(6000, 70, 150);
 let step3 = new Steps(6000, 70, 150);
 let step4 = new Steps(6000, 70, 150);
 let step5 = new Steps(6000, 70, 150);
-let step6 = new Steps(6000, 80, 150);
-let step7 = new Steps(6000, 80, 150);
+let step6 = new Steps(6000, 70, 150);
+let step7 = new Steps(6000, 70, 150);
 let step8 = new Steps(6000, 70, 150);
-let step9 = new Steps(6000, 100, 150);
+let step9 = new Steps(6000, 70, 150);
 let step10 = new Steps(6000, 70, 150);
 let step11 = new Steps(6000, 70, 150);
 let step12 = new Steps(6000, 70, 150);
