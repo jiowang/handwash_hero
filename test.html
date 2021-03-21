@@ -14,6 +14,14 @@
 			output.innerHTML += "<br/>" + 'Palm Velocity #' + h + ': '+ frame.hands[h].palmVelocity;
       output.innerHTML += "<br/>" + 'Hand Pointable #' + h + ': ' + frame.pointables[h];
       output.innerHTML += "<br/>" + frame;
+
+	  var extendedFingers = 0;
+      for(var f = 0; f < frame.hands[h].fingers.length; f++){
+          var finger = frame.hands[h].fingers[f];
+          if(finger.extended) extendedFingers++;
+	  }
+      console.log("Extended fingers: " + extendedFingers);
+
 		}
   		});
 	</script>
