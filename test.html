@@ -1,0 +1,19 @@
+<script src="./js/leap-1.1.0.js"></script>
+
+<div id=output></div>
+
+	<script>
+  		var output = document.getElementById('output');
+  		Leap.loop(function (frame) {
+    	output.innerHTML = 'Frame: ' + frame.id;
+      console.log(frame);
+		for (var h = 0; h < frame.hands.length; h++) {
+      output.innerHTML += "<br/>";
+			output.innerHTML += "<br/>" + 'Palm Pos #' + h + ': '+ frame.hands[h].palmPosition;
+			output.innerHTML += "<br/>" + 'Palm Normal #' + h + ': '+ frame.hands[h].palmNormal;
+			output.innerHTML += "<br/>" + 'Palm Velocity #' + h + ': '+ frame.hands[h].palmVelocity;
+      output.innerHTML += "<br/>" + 'Hand Pointable #' + h + ': ' + frame.pointables[h];
+      output.innerHTML += "<br/>" + frame;
+		}
+  		});
+	</script>
