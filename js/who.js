@@ -238,19 +238,19 @@ class Steps {
 }
 
 // WHO step objects initialized
-let step1 = new Steps(6000, 70, 150);
-let step2 = new Steps(6000, 70, 150);
-let step3 = new Steps(6000, 70, 150);
-let step4 = new Steps(6000, 70, 150);
-let step5 = new Steps(6000, 70, 150);
-let step6 = new Steps(6000, 80, 150);
-let step7 = new Steps(6000, 80, 150);
-let step8 = new Steps(6000, 70, 150);
-let step9 = new Steps(6000, 100, 150);
-let step10 = new Steps(6000, 70, 150);
-let step11 = new Steps(6000, 70, 150);
-let step12 = new Steps(6000, 70, 150);
-let step13 = new Steps(6000, 70, 150);;
+let step1 = new Steps(6000, 90, 150);
+let step2 = new Steps(6000, 90, 150);
+let step3 = new Steps(6000, 90, 150);
+let step4 = new Steps(6000, 90, 150);
+let step5 = new Steps(6000, 90, 150);
+let step6 = new Steps(6000, 100, 150);
+let step7 = new Steps(6000, 100, 150);
+let step8 = new Steps(6000, 90, 150);
+let step9 = new Steps(6000, 120, 150);
+let step10 = new Steps(6000, 90, 150);
+let step11 = new Steps(6000, 90, 150);
+let step12 = new Steps(6000, 90, 150);
+let step13 = new Steps(6000, 90, 150);;
 
 let step = [null, step1, step2, step3, step4, step5, step6, step7, step8, step9, step10, step11, step12, step13];
 
