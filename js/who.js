@@ -272,15 +272,15 @@ var stepBox = document.getElementById('box').className = "shadow-sm p-3 mb-5 bg-
 var stepOutput = document.getElementById('steps');
 
 // For button
-var output = document.getElementById('output');
 function skipStep() {
     resetSteps();
-    resetText();
+    //resetText();
     i++;
     if (i > 9) {
         i = 3;
     }
 }
+document.getElementById("skip").addEventListener("click", skipStep);
 
 var progressBar;
 
@@ -343,9 +343,6 @@ var i = 3;
 introText();
 
 Leap.loop({enableGestures: true}, function(frame) {
-    
-    //button
-    output.innerHTML = '<button onclick="skipStep()">Skip NOW</button>'
 
     if (frame.hands.length > 2) {
         tooManyHandsText();
