@@ -25,31 +25,7 @@ function step3far(frame) {
 // Step 4 //
 // Determins if the palms are together to start step 4
 function step4State(frame) {
-    return isPalmsTogether(frame) && frame.hands.length == 2 &&
-    ((frame.hands[0].palmNormal[0] >= 0 && frame.hands[1].palmNormal[0] >= 0 &&
-    frame.hands[0].palmNormal[1] >= 0 && frame.hands[1].palmNormal[1] >= 0 &&
-    frame.hands[0].palmNormal[2] >= 0 && frame.hands[1].palmNormal[2] >= 0) ||
-    (frame.hands[0].palmNormal[0] >= 0 && frame.hands[1].palmNormal[0] >= 0 &&
-    frame.hands[0].palmNormal[1] >= 0 && frame.hands[1].palmNormal[1] >= 0 &&
-    frame.hands[0].palmNormal[2] < 0 && frame.hands[1].palmNormal[2] < 0) ||
-    (frame.hands[0].palmNormal[0] >= 0 && frame.hands[1].palmNormal[0] >= 0 &&
-    frame.hands[0].palmNormal[1] < 0 && frame.hands[1].palmNormal[1] < 0 &&
-    frame.hands[0].palmNormal[2] >= 0 && frame.hands[1].palmNormal[2] >= 0) ||
-    (frame.hands[0].palmNormal[0] >= 0 && frame.hands[1].palmNormal[0] >= 0 &&
-    frame.hands[0].palmNormal[1] < 0 && frame.hands[1].palmNormal[1] < 0 &&
-    frame.hands[0].palmNormal[2] < 0 && frame.hands[1].palmNormal[2] < 0) ||
-    (frame.hands[0].palmNormal[0] < 0 && frame.hands[1].palmNormal[0] < 0 &&
-    frame.hands[0].palmNormal[1] >= 0 && frame.hands[1].palmNormal[1] >= 0 &&
-    frame.hands[0].palmNormal[2] >= 0 && frame.hands[1].palmNormal[2] >= 0) ||
-    (frame.hands[0].palmNormal[0] < 0 && frame.hands[1].palmNormal[0] < 0 &&
-    frame.hands[0].palmNormal[1] >= 0 && frame.hands[1].palmNormal[1] >= 0 &&
-    frame.hands[0].palmNormal[2] < 0 && frame.hands[1].palmNormal[2] < 0) ||
-    (frame.hands[0].palmNormal[0] < 0 && frame.hands[1].palmNormal[0] < 0 &&
-    frame.hands[0].palmNormal[1] < 0 && frame.hands[1].palmNormal[1] < 0 &&
-    frame.hands[0].palmNormal[2] >= 0 && frame.hands[1].palmNormal[2] >= 0) ||
-    (frame.hands[0].palmNormal[0] < 0 && frame.hands[1].palmNormal[0] < 0 &&
-    frame.hands[0].palmNormal[1] < 0 && frame.hands[1].palmNormal[1] < 0 &&
-    frame.hands[0].palmNormal[2] < 0 && frame.hands[1].palmNormal[2] < 0)) &&
+    return isPalmsTogether(frame) &&
     (Math.abs(frame.hands[0].palmVelocity[0] > 100) || Math.abs(frame.hands[0].palmVelocity[1] > 100) || Math.abs(frame.hands[0].palmVelocity[2] > 100)) &&
     (Math.abs(frame.hands[1].palmVelocity[0] > 100) || Math.abs(frame.hands[1].palmVelocity[1] > 100) || Math.abs(frame.hands[1].palmVelocity[2] > 100))
 }
@@ -62,31 +38,7 @@ function step4far(frame) {
 // Step 5 //
 // Determins if the palms are together to start step 5
 function step5State(frame) {
-    return isPalmsTogether(frame) && frame.hands.length == 2 &&
-    !((frame.hands[0].palmNormal[0] >= 0 && frame.hands[1].palmNormal[0] >= 0 &&
-    frame.hands[0].palmNormal[1] >= 0 && frame.hands[1].palmNormal[1] >= 0 &&
-    frame.hands[0].palmNormal[2] >= 0 && frame.hands[1].palmNormal[2] >= 0) ||
-    (frame.hands[0].palmNormal[0] >= 0 && frame.hands[1].palmNormal[0] >= 0 &&
-    frame.hands[0].palmNormal[1] >= 0 && frame.hands[1].palmNormal[1] >= 0 &&
-    frame.hands[0].palmNormal[2] < 0 && frame.hands[1].palmNormal[2] < 0) ||
-    (frame.hands[0].palmNormal[0] >= 0 && frame.hands[1].palmNormal[0] >= 0 &&
-    frame.hands[0].palmNormal[1] < 0 && frame.hands[1].palmNormal[1] < 0 &&
-    frame.hands[0].palmNormal[2] >= 0 && frame.hands[1].palmNormal[2] >= 0) ||
-    (frame.hands[0].palmNormal[0] >= 0 && frame.hands[1].palmNormal[0] >= 0 &&
-    frame.hands[0].palmNormal[1] < 0 && frame.hands[1].palmNormal[1] < 0 &&
-    frame.hands[0].palmNormal[2] < 0 && frame.hands[1].palmNormal[2] < 0) ||
-    (frame.hands[0].palmNormal[0] < 0 && frame.hands[1].palmNormal[0] < 0 &&
-    frame.hands[0].palmNormal[1] >= 0 && frame.hands[1].palmNormal[1] >= 0 &&
-    frame.hands[0].palmNormal[2] >= 0 && frame.hands[1].palmNormal[2] >= 0) ||
-    (frame.hands[0].palmNormal[0] < 0 && frame.hands[1].palmNormal[0] < 0 &&
-    frame.hands[0].palmNormal[1] >= 0 && frame.hands[1].palmNormal[1] >= 0 &&
-    frame.hands[0].palmNormal[2] < 0 && frame.hands[1].palmNormal[2] < 0) ||
-    (frame.hands[0].palmNormal[0] < 0 && frame.hands[1].palmNormal[0] < 0 &&
-    frame.hands[0].palmNormal[1] < 0 && frame.hands[1].palmNormal[1] < 0 &&
-    frame.hands[0].palmNormal[2] >= 0 && frame.hands[1].palmNormal[2] >= 0) ||
-    (frame.hands[0].palmNormal[0] < 0 && frame.hands[1].palmNormal[0] < 0 &&
-    frame.hands[0].palmNormal[1] < 0 && frame.hands[1].palmNormal[1] < 0 &&
-    frame.hands[0].palmNormal[2] < 0 && frame.hands[1].palmNormal[2] < 0)) &&
+    return isPalmsTogether(frame) &&
     (Math.abs(frame.hands[0].palmVelocity[0] > 100) || Math.abs(frame.hands[0].palmVelocity[1] > 100) || Math.abs(frame.hands[0].palmVelocity[2] > 100)) &&
     (Math.abs(frame.hands[1].palmVelocity[0] > 100) || Math.abs(frame.hands[1].palmVelocity[1] > 100) || Math.abs(frame.hands[1].palmVelocity[2] > 100))
 }
@@ -102,13 +54,9 @@ function step5far(frame) {
 // Step 6 //
 // Determins if the palms are together to start step 6
 function step6State(frame) {
-    return frame.hands.length == 2 && 
-    Math.abs(frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0]) <  step6.distance &&
-    Math.abs(frame.hands[0].palmPosition[1] - frame.hands[1].palmPosition[1]) <  step6.distance &&
-    Math.abs(frame.hands[0].palmPosition[2] - frame.hands[1].palmPosition[2]) <  step6.distance &&
+    return isPalmsTogether(frame) &&
     (Math.abs(frame.hands[0].palmVelocity[0] > 100) || Math.abs(frame.hands[0].palmVelocity[1] > 100) || Math.abs(frame.hands[0].palmVelocity[2] > 100)) &&
     (Math.abs(frame.hands[1].palmVelocity[0] > 100) || Math.abs(frame.hands[1].palmVelocity[1] > 100) || Math.abs(frame.hands[1].palmVelocity[2] > 100))
-
 }
 
 // Determins if the palms are far away to pause step 6 if the case
@@ -122,22 +70,9 @@ function step6far(frame) {
 // Step 7 //
 // Determins if the palms are together to start step 7
 function step7State(frame) {
-    return frame.hands.length == 2 && 
-    Math.abs(frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0]) <  step7.distance &&
-    Math.abs(frame.hands[0].palmPosition[1] - frame.hands[1].palmPosition[1]) <  step7.distance &&
-    Math.abs(frame.hands[0].palmPosition[2] - frame.hands[1].palmPosition[2]) <  step7.distance &&
-    (Math.abs(frame.hands[0].palmVelocity[0] > 30) || Math.abs(frame.hands[0].palmVelocity[1] > 100) || Math.abs(frame.hands[0].palmVelocity[2] > 30)) &&
-    (Math.abs(frame.hands[1].palmVelocity[0] > 30) || Math.abs(frame.hands[1].palmVelocity[1] > 100) || Math.abs(frame.hands[1].palmVelocity[2] > 30)) &&
-    ((frame.hands[0].fingers.length > 3 &&
-    frame.hands[0].fingers[0].extended &&
-    frame.hands[0].fingers[1].extended &&
-    frame.hands[0].fingers[2].extended &&
-    frame.hands[0].fingers[3].extended) || 
-    (frame.hands[1].fingers.length > 3 &&
-    frame.hands[1].fingers[0].extended &&
-    frame.hands[1].fingers[1].extended &&
-    frame.hands[1].fingers[2].extended &&
-    frame.hands[1].fingers[3].extended))
+    return isPalmsTogether(frame) &&
+    (Math.abs(frame.hands[0].palmVelocity[0] > 100) || Math.abs(frame.hands[0].palmVelocity[1] > 100) || Math.abs(frame.hands[0].palmVelocity[2] > 100)) &&
+    (Math.abs(frame.hands[1].palmVelocity[0] > 100) || Math.abs(frame.hands[1].palmVelocity[1] > 100) || Math.abs(frame.hands[1].palmVelocity[2] > 100))
 }
 
 // Determins if the palms are far away to pause step 7 if the case
@@ -151,24 +86,9 @@ function step7far(frame) {
 // Step 8 //
 // Determins if the palms are together to start step 8
 function step8State(frame) {
-    return frame.hands.length == 2 && 
-    Math.abs(frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0]) <  step8.distance &&
-    Math.abs(frame.hands[0].palmPosition[1] - frame.hands[1].palmPosition[1]) <  step8.distance &&
-    Math.abs(frame.hands[0].palmPosition[2] - frame.hands[1].palmPosition[2]) <  step8.distance &&
-    ((Math.abs(frame.hands[0].palmVelocity[0] > 60) || Math.abs(frame.hands[0].palmVelocity[1] > 60) || Math.abs(frame.hands[0].palmVelocity[2] > 60)) ||
-    (Math.abs(frame.hands[1].palmVelocity[0] > 60) || Math.abs(frame.hands[1].palmVelocity[1] > 60) || Math.abs(frame.hands[1].palmVelocity[2] > 60))) &&
-    ((frame.hands[0].fingers.length > 4 &&
-    frame.hands[0].fingers[0].extended &&
-    frame.hands[0].fingers[1].extended &&
-    frame.hands[0].fingers[2].extended &&
-    frame.hands[0].fingers[3].extended &&
-    frame.hands[0].fingers[4].extended) || 
-    (frame.hands[1].fingers.length > 4 &&
-    frame.hands[1].fingers[0].extended &&
-    frame.hands[1].fingers[1].extended &&
-    frame.hands[1].fingers[2].extended &&
-    frame.hands[1].fingers[3].extended &&
-    frame.hands[1].fingers[4].extended))
+    return isPalmsTogether(frame) &&
+    (Math.abs(frame.hands[0].palmVelocity[0] > 100) || Math.abs(frame.hands[0].palmVelocity[1] > 100) || Math.abs(frame.hands[0].palmVelocity[2] > 100)) &&
+    (Math.abs(frame.hands[1].palmVelocity[0] > 100) || Math.abs(frame.hands[1].palmVelocity[1] > 100) || Math.abs(frame.hands[1].palmVelocity[2] > 100))
 }
 
 // Determins if the palms are far away to pause step 8 if the case
@@ -182,27 +102,9 @@ function step8far(frame) {
 // Step 9 //
 // Determins if the palms are together to start step 8
 function step9State(frame) {
-    return frame.hands.length == 2 && 
-    Math.abs(frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0]) <  step9.distance &&
-    Math.abs(frame.hands[0].palmPosition[1] - frame.hands[1].palmPosition[1]) <  step9.distance &&
-    Math.abs(frame.hands[0].palmPosition[2] - frame.hands[1].palmPosition[2]) <  step9.distance &&
-    Math.abs(frame.hands[0].palmPosition[0] - frame.hands[1].palmPosition[0]) >  20 &&
-    Math.abs(frame.hands[0].palmPosition[1] - frame.hands[1].palmPosition[1]) >  20 &&
-    Math.abs(frame.hands[0].palmPosition[2] - frame.hands[1].palmPosition[2]) >  20 &&
-    ((Math.abs(frame.hands[0].palmVelocity[0] > 60) || Math.abs(frame.hands[0].palmVelocity[1] > 60) || Math.abs(frame.hands[0].palmVelocity[2] > 60)) ||
-    (Math.abs(frame.hands[1].palmVelocity[0] > 60) || Math.abs(frame.hands[1].palmVelocity[1] > 60) || Math.abs(frame.hands[1].palmVelocity[2] > 60))) &&
-    ((frame.hands[0].fingers.length > 4 &&
-    frame.hands[0].fingers[0].extended &&
-    frame.hands[0].fingers[1].extended &&
-    frame.hands[0].fingers[2].extended &&
-    frame.hands[0].fingers[3].extended &&
-    frame.hands[0].fingers[4].extended) || 
-    (frame.hands[1].fingers.length > 4 &&
-    frame.hands[1].fingers[0].extended &&
-    frame.hands[1].fingers[1].extended &&
-    frame.hands[1].fingers[2].extended &&
-    frame.hands[1].fingers[3].extended &&
-    frame.hands[1].fingers[4].extended))
+    return isPalmsTogether(frame) &&
+    (Math.abs(frame.hands[0].palmVelocity[0] > 100) || Math.abs(frame.hands[0].palmVelocity[1] > 100) || Math.abs(frame.hands[0].palmVelocity[2] > 100)) &&
+    (Math.abs(frame.hands[1].palmVelocity[0] > 100) || Math.abs(frame.hands[1].palmVelocity[1] > 100) || Math.abs(frame.hands[1].palmVelocity[2] > 100))
 }
 
 // Determins if the palms are far away to pause step 8 if the case
@@ -238,19 +140,19 @@ class Steps {
 }
 
 // WHO step objects initialized
-let step1 = new Steps(6000, 70, 150);
-let step2 = new Steps(6000, 70, 150);
-let step3 = new Steps(6000, 70, 150);
-let step4 = new Steps(6000, 70, 150);
-let step5 = new Steps(6000, 70, 150);
-let step6 = new Steps(6000, 80, 150);
-let step7 = new Steps(6000, 80, 150);
-let step8 = new Steps(6000, 70, 150);
-let step9 = new Steps(6000, 100, 150);
-let step10 = new Steps(6000, 70, 150);
-let step11 = new Steps(6000, 70, 150);
-let step12 = new Steps(6000, 70, 150);
-let step13 = new Steps(6000, 70, 150);;
+let step1 = new Steps(6000, 90, 150);
+let step2 = new Steps(6000, 90, 150);
+let step3 = new Steps(6000, 90, 150);
+let step4 = new Steps(6000, 90, 150);
+let step5 = new Steps(6000, 90, 150);
+let step6 = new Steps(6000, 100, 150);
+let step7 = new Steps(6000, 100, 150);
+let step8 = new Steps(6000, 90, 150);
+let step9 = new Steps(6000, 120, 150);
+let step10 = new Steps(6000, 90, 150);
+let step11 = new Steps(6000, 90, 150);
+let step12 = new Steps(6000, 90, 150);
+let step13 = new Steps(6000, 90, 150);;
 
 let step = [null, step1, step2, step3, step4, step5, step6, step7, step8, step9, step10, step11, step12, step13];
 
@@ -267,14 +169,29 @@ function resetSteps() {
 }
 
 // Main DOM element to display the page
-var stepBox = document.getElementById('box').className = "shadow-sm p-3 mb-5 bg-success rounded";
+var stepBox = document.getElementById('box'); //.className = "shadow-sm p-3 mb-5 bg-danger rounded";
 
 var stepOutput = document.getElementById('steps');
+
+//document.getElementById("btn").style.opacity;
+// For button
+/* function skipStep() {
+    resetSteps();
+    //resetText();
+    i++;
+    if (i > 9) {
+        i = 3;
+    }
+}
+document.getElementById("skip").addEventListener("click", skipStep); */
 
 var progressBar;
 
 let width = 400;
 let height = 400;
+let smile = "<img src = './img/smile-unscreen.gif' width=" + width + " height=" + height + ">";
+let begStep = "<img src = './img/begStep.gif' width=" + width + " height=" + height + ">"
+let celeb = "<img src = './img/celebrate.gif' width=" + width + " height=" + height + ">"
 step1.img = "<img src = './img/step1.png' width=" + width + " height=" + height + ">";
 step2.img = "<img src = './img/step2.png' width=" + width + " height=" + height + ">";
 step3.img = "<img src = './img/step3.png' width=" + width + " height=" + height + ">";
@@ -290,31 +207,53 @@ step12.img = "<img src = './img/step12.png' width=" + width + " height=" + heigh
 step13.img = "<img src = './img/step13.png' width=" + width + " height=" + height + ">";
 
 function introText() {
-    stepOutput.innerHTML = 'Please wet your hands to get started!' + '<br><br>' + 'Follow the instructions from image to wash your hands correctly.'
-    + '<br><br>' + step1.img + ' ' + step2.img;
+    stepOutput.innerHTML = '<span style="font-size: 150%">Please <b style="color: DarkSlateBlue">wet</b> and <b style="color: DarkSlateBlue">soap</b> your hands to get started!</span>' + '<br><br>' +
+                           'This will complete the <b style="color: Salmon">steps 1 and 2</b> out of <b style="color: Salmon">10</b> handwashing steps' + '<br>' +
+                           'Follow the instructions from the images to wash your hands correctly' +
+                           '<br><br>' + begStep;
 }
 
 function stepText(stepNum) {
-    stepOutput.innerHTML = 'Step ' + stepNum + ' started.' + '<br><br><br>' + step[stepNum].img + '<br>';
+    if (stepNum === 3) {
+        stepOutput.innerHTML = '<span style="font-size: 150%; color: Tomato">Step ' + stepNum + '</span><br>' + 'Rub hands <span style="color: Tomato">palm to palm</span> in a circular motion.' + '<br><br><br>' + step[stepNum].img + '<br>';
+    } else if (stepNum == 4) {
+        stepOutput.innerHTML = '<span style="font-size: 150%; color: SteelBlue">Step ' + stepNum + '</span><br>' + 'Clean the <span style="color: SteelBlue">back of each hand</span> with the palm of your opposite hand.' + '<br><br><br>' + step[stepNum].img + '<br>';
+    } else if (stepNum == 5) {
+        stepOutput.innerHTML = '<span style="font-size: 150%; color: Orchid">Step ' + stepNum + '</span><br>' + 'Scrub <span style="color: Orchid">between your fingers</span> by interlacing your fingers' + '<br>' + 'Then rubbing back and forth.' + '<br><br>' + step[stepNum].img + '<br>';
+    } else if (stepNum == 6) {
+        stepOutput.innerHTML = '<span style="font-size: 150%; color: Navy">Step ' + stepNum + '</span><br>' + 'Clean the <span style="color: Navy">back of your fingers</span> by rubbing your interlocked fingers into your palm.'  + '<br>' + 'Repeat for both hands.' + '<br><br>' + step[stepNum].img + '<br>';
+    } else if (stepNum == 7) {
+        stepOutput.innerHTML = '<span style="font-size: 150%; color: Tomato">Step ' + stepNum + '</span><br>' + 'Clean around <span style="color: Tomato">each thumb</span> with your opposite hand.' + '<br><br><br>' + step[stepNum].img + '<br>';
+    } else if (stepNum == 8) {
+        stepOutput.innerHTML = '<span style="font-size: 150%; color: MediumPurple">Step ' + stepNum + '</span><br>' + 'Rub your <span style="color: MediumPurple">fingertips</span> into the palm of your opposite hand.' + '<br>' + 'Repeat for both hands.' + '<br><br>' + step[stepNum].img + '<br>';
+    } else if (stepNum == 9) {
+        stepOutput.innerHTML = '<span style="font-size: 150%; color: Orchid">Step ' + stepNum + '</span><br>' + 'Wash <span style="color: Orchid">each wrist</span> with your opposite hand.' + '<br><br><br>' + step[stepNum].img + '<br>';
+    }
 }
 
 function timeRemainText(stepNum) {
-    let num = (6 - step[stepNum].startTime.getTimeValues().seconds) / 6 * 100;
     stepOutput.innerHTML += '<br>' + 'Time remaining: ' + step[stepNum].startTime.getTimeValues().seconds + '<br><br>';
-    progressBar = '<div class="progress" style="height: 20px; width: 600px;" ><div class=\"progress-bar progress-bar-striped progress-bar-animated\" role=\"progressbar\" aria-valuenow=\"' + num + '\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: ' + num + '%\"></div></div>'
+}
+
+function progressbarText(stepNum, bg = "") {
+    let num = ((6 - step[stepNum].startTime.getTimeValues().seconds) / 6 * 100);
+    progressBar = '<div class="progress" style="height: 20px; width: 600px;" ><div class=\"progress-bar ' + bg + ' progress-bar-striped progress-bar-animated\" role=\"progressbar\" aria-valuenow=\"' + num + '\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: ' + num + '%\"></div></div>'
     stepOutput.innerHTML += progressBar;
 }
 
-function farHandsText() {
-    stepOutput.innerHTML = '<br>' + 'Please put your hands together to wash your palms' + '<br>';
+function farHandsText(stepNum) {
+    stepOutput.innerHTML = '<span style="font-size: 150%; color: Red">Wait!</span>' + '<br>' +'Please put your hands together to continue.' + '<br><br><br>' + step[stepNum].img + '<br>';
+    stepOutput.innerHTML += '<br>' + 'Paused' + '<br><br>';
+    progressbarText(stepNum, "bg-danger");
 }
 
-function resumeText() {
-    stepOutput.innerHTML += '<br>Resuming...';
-}
+/* function resumeText(stepNum) {
+    stepOutput.innerHTML += '<br>' + 'Resuming...' + '<br><br>';
+    progressbarText(stepNum);
+} */
 
 function finishText() {
-    stepOutput.innerHTML = 'Done. Please rinse and dry your hands!';
+    stepOutput.innerHTML = '<span style="font-size: 150%; color: Orchid">You\'re done! Great job!</span>' + '<br>' + ' Please <span style="color: Navy">rinse and dry</span> your hands!' + '<br><br><br>' + celeb;
 }
 
 function resetText() {
@@ -326,12 +265,45 @@ function tooManyHandsText() {
     stepOutput.innerHTML = 'More than two hands detected. Only one user allowed';
 }
 
+function triggerFireworks() {
+    document.getElementById("btn").click();
+}
+
 // Counter for number of steps
 var i = 3;
+
+var congFlag = false;
+let congTime = new easytimer.Timer();
+let randNum = 0;
+let tempStep = 0;
+let tempStepFlag = false;
+
+function congratzText() {
+    if (!tempStepFlag) {
+        tempStep = i;
+        i = 0;
+        tempStepFlag = true;
+    }
+    let congMsg = ['<span style="font-size: 150%; color: Orchid">Great job! You\'re doing great!</span>',
+                   '<span style="font-size: 150%; color: Navy">Amazing work!</span>',
+                   '<span style="font-size: 150%; color: IndianRed">Well done!</span>',
+                   '<span style="font-size: 150%; color: MediumPurple">Way to go!</span>',
+                   '<span style="font-size: 150%; color: Red">Almost there!</span>']
+    congTime.start();
+    stepOutput.innerHTML = congMsg[randNum] + '<br><br><br>' + smile + '<br>';
+    if (congTime.getTimeValues().seconds > 3) {
+        i = tempStep;
+        tempStepFlag = false;
+        congTime = new easytimer.Timer();
+        congFlag = false;
+        randNum = Math.floor(Math.random() * 5);
+    }
+}
 
 introText();
 
 Leap.loop({enableGestures: true}, function(frame) {
+
     if (frame.hands.length > 2) {
         tooManyHandsText();
     }
@@ -342,6 +314,7 @@ Leap.loop({enableGestures: true}, function(frame) {
         resetText();
         i = 3;
     }
+
     // Step 1
     if (step[i] === step1) {
     }
@@ -354,33 +327,32 @@ Leap.loop({enableGestures: true}, function(frame) {
             i++;
         }
         // Text displays
-        if (step3.delayTimeFlag) {
+        if (step3.start) {
             stepText(3);
         }
-        if (step3.startTimeFlag && step3.delayTime.getTimeValues().seconds >= 2) {
+
+        if (step3.startTimeFlag) {
             step3.startTime.start();
             timeRemainText(3);
+            progressbarText(3);
             if (step3.startTime.getTimeValues().seconds <= 0) {
+                for (let i = 0; i < 3; i++) {
+                    triggerFireworks();
+                }
                 step3.finish = true;
+                congFlag = true;
             }
         }
-        if (step3.delayTimeFlag && step3.delayTime.getTimeValues().seconds < 2) {
-            step3.delayTime.start();
-            resumeText();
-        }
+
         // Check if palms are close or not
         if (step3State(frame)) {
             step3.start = true;
-            if (!step3.delayTimeFlag) {
-                step3.delayTime.start();
-                step3.delayTimeFlag = true;
-                step3.startTime.start({countdown: true, startValues: {seconds: 8}});
-                step3.startTimeFlag = true;
-            }
+            step3.startTime.start({countdown: true, startValues: {seconds: 6}});
+            step3.startTimeFlag = true;
+
         } else if (step3.start && step3far(frame)) {
             step3.startTime.pause();
-            step3.delayTime.reset();
-            farHandsText();
+            farHandsText(3);
         }
     }
     // Step 4
@@ -389,33 +361,29 @@ Leap.loop({enableGestures: true}, function(frame) {
             i++;
         }
         // Text displays
-        //if (step4.delayTimeFlag) {
-            stepText(4);
-        //}
-        if (step4.startTimeFlag && step4.delayTime.getTimeValues().seconds >= 2) {
+        stepText(4);
+
+        if (step4.startTimeFlag) {
             step4.startTime.start();
             timeRemainText(4);
+            progressbarText(4);
             if (step4.startTime.getTimeValues().seconds <= 0) {
+                for (let i = 0; i < 3; i++) {
+                    triggerFireworks();
+                }
                 step4.finish = true;
+                congFlag = true;
             }
         }
-        if (step4.delayTimeFlag && step4.delayTime.getTimeValues().seconds < 2) {
-            step4.delayTime.start();
-            resumeText();
-        }
+
         // Check if palms are close or not
         if (step4State(frame)) {
             step4.start = true;
-            if (!step4.delayTimeFlag) {
-                step4.delayTime.start();
-                step4.delayTimeFlag = true;
-                step4.startTime.start({countdown: true, startValues: {seconds: 8}});
-                step4.startTimeFlag = true;
-            }
+            step4.startTime.start({countdown: true, startValues: {seconds: 6}});
+            step4.startTimeFlag = true;
         } else if (step4.start && step4far(frame)) {
             step4.startTime.pause();
-            step4.delayTime.reset();
-            farHandsText();
+            farHandsText(4);
         }
     }
     // Step 5
@@ -424,33 +392,29 @@ Leap.loop({enableGestures: true}, function(frame) {
             i++;
         }
         // Text displays
-        //if (step5.delayTimeFlag) {
-            stepText(5);
-        //}
-        if (step5.startTimeFlag && step5.delayTime.getTimeValues().seconds >= 2) {
+        stepText(5);
+
+        if (step5.startTimeFlag) {
             step5.startTime.start();
             timeRemainText(5);
+            progressbarText(5);
             if (step5.startTime.getTimeValues().seconds <= 0) {
+                for (let i = 0; i < 3; i++) {
+                    triggerFireworks();
+                }
                 step5.finish = true;
+                congFlag = true;
             }
         }
-        if (step5.delayTimeFlag && step5.delayTime.getTimeValues().seconds < 2) {
-            step5.delayTime.start();
-            resumeText();
-        }
+
         // Check if palms are close or not
         if (step5State(frame)) {
             step5.start = true;
-            if (!step5.delayTimeFlag) {
-                step5.delayTime.start();
-                step5.delayTimeFlag = true;
-                step5.startTime.start({countdown: true, startValues: {seconds: 8}});
-                step5.startTimeFlag = true;
-            }
+            step5.startTime.start({countdown: true, startValues: {seconds: 6}});
+            step5.startTimeFlag = true;
         } else if (step5.start && step5far(frame)) {
             step5.startTime.pause();
-            step5.delayTime.reset();
-            farHandsText();
+            farHandsText(5);
         }
     }
     // Step 6
@@ -459,33 +423,29 @@ Leap.loop({enableGestures: true}, function(frame) {
             i++;
         }
         // Text displays
-        //if (step6.delayTimeFlag) {
-            stepText(6);
-        //}
-        if (step6.startTimeFlag && step6.delayTime.getTimeValues().seconds >= 2) {
+        stepText(6);
+
+        if (step6.startTimeFlag) {
             step6.startTime.start();
             timeRemainText(6);
+            progressbarText(6);
             if (step6.startTime.getTimeValues().seconds <= 0) {
+                for (let i = 0; i < 3; i++) {
+                    triggerFireworks();
+                }
                 step6.finish = true;
+                congFlag = true;
             }
         }
-        if (step6.delayTimeFlag && step6.delayTime.getTimeValues().seconds < 2) {
-            step6.delayTime.start();
-            resumeText();
-        }
+
         // Check if palms are close or not
         if (step6State(frame)) {
             step6.start = true;
-            if (!step6.delayTimeFlag) {
-                step6.delayTime.start();
-                step6.delayTimeFlag = true;
-                step6.startTime.start({countdown: true, startValues: {seconds: 8}});
-                step6.startTimeFlag = true;
-            }
+            step6.startTime.start({countdown: true, startValues: {seconds: 6}});
+            step6.startTimeFlag = true;
         } else if (step6.start && step6far(frame)) {
             step6.startTime.pause();
-            step6.delayTime.reset();
-            farHandsText();
+            farHandsText(6);
         }
     }
     // Step 7
@@ -494,33 +454,29 @@ Leap.loop({enableGestures: true}, function(frame) {
             i++;
         }
         // Text displays
-        //if (step7.delayTimeFlag) {
-            stepText(7);
-        //}
-        if (step7.startTimeFlag && step7.delayTime.getTimeValues().seconds >= 2) {
+        stepText(7);
+
+        if (step7.startTimeFlag) {
             step7.startTime.start();
             timeRemainText(7);
+            progressbarText(7);
             if (step7.startTime.getTimeValues().seconds <= 0) {
+                for (let i = 0; i < 3; i++) {
+                    triggerFireworks();
+                }
                 step7.finish = true;
+                congFlag = true;
             }
         }
-        if (step7.delayTimeFlag && step7.delayTime.getTimeValues().seconds < 2) {
-            step7.delayTime.start();
-            resumeText();
-        }
+
         // Check if palms are close or not
         if (step7State(frame)) {
             step7.start = true;
-            if (!step7.delayTimeFlag) {
-                step7.delayTime.start();
-                step7.delayTimeFlag = true;
-                step7.startTime.start({countdown: true, startValues: {seconds: 8}});
-                step7.startTimeFlag = true;
-            }
+            step7.startTime.start({countdown: true, startValues: {seconds: 6}});
+            step7.startTimeFlag = true;
         } else if (step7.start && step7far(frame)) {
             step7.startTime.pause();
-            step7.delayTime.reset();
-            farHandsText();
+            farHandsText(7);
         }
     }
     // Step 8
@@ -529,33 +485,29 @@ Leap.loop({enableGestures: true}, function(frame) {
             i++;
         }
         // Text displays
-        //if (step8.delayTimeFlag) {
-            stepText(8);
-        //}
-        if (step8.startTimeFlag && step8.delayTime.getTimeValues().seconds >= 2) {
+        stepText(8);
+
+        if (step8.startTimeFlag) {
             step8.startTime.start();
             timeRemainText(8);
+            progressbarText(8);
             if (step8.startTime.getTimeValues().seconds <= 0) {
+                for (let i = 0; i < 3; i++) {
+                    triggerFireworks();
+                }
                 step8.finish = true;
+                congFlag = true;
             }
         }
-        if (step8.delayTimeFlag && step8.delayTime.getTimeValues().seconds < 2) {
-            step8.delayTime.start();
-            resumeText();
-        }
+
         // Check if palms are close or not
         if (step8State(frame)) {
             step8.start = true;
-            if (!step8.delayTimeFlag) {
-                step8.delayTime.start();
-                step8.delayTimeFlag = true;
-                step8.startTime.start({countdown: true, startValues: {seconds: 8}});
-                step8.startTimeFlag = true;
-            }
+            step8.startTime.start({countdown: true, startValues: {seconds: 6}});
+            step8.startTimeFlag = true;
         } else if (step8.start && step8far(frame)) {
             step8.startTime.pause();
-            step8.delayTime.reset();
-            farHandsText();
+            farHandsText(8);
         }
     }
     // Step 9
@@ -564,33 +516,28 @@ Leap.loop({enableGestures: true}, function(frame) {
             i++;
         }
         // Text displays
-        //if (step9.delayTimeFlag) {
-            stepText(9);
-        //}
-        if (step9.startTimeFlag && step9.delayTime.getTimeValues().seconds >= 2) {
+        stepText(9);
+        if (step9.startTimeFlag) {
             step9.startTime.start();
             timeRemainText(9);
+            progressbarText(9);
             if (step9.startTime.getTimeValues().seconds <= 0) {
+                for (let i = 0; i < 3; i++) {
+                    triggerFireworks();
+                }
                 step9.finish = true;
+                congFlag = true;
             }
         }
-        if (step9.delayTimeFlag && step9.delayTime.getTimeValues().seconds < 2) {
-            step9.delayTime.start();
-            resumeText();
-        }
+
         // Check if palms are close or not
         if (step9State(frame)) {
             step9.start = true;
-            if (!step9.delayTimeFlag) {
-                step9.delayTime.start();
-                step9.delayTimeFlag = true;
-                step9.startTime.start({countdown: true, startValues: {seconds: 8}});
-                step9.startTimeFlag = true;
-            }
+            step9.startTime.start({countdown: true, startValues: {seconds: 6}});
+            step9.startTimeFlag = true;
         } else if (step9.start && step9far(frame)) {
             step9.startTime.pause();
-            step9.delayTime.reset();
-            farHandsText();
+            farHandsText(9);
         }
     }
     // Step 10
@@ -603,4 +550,9 @@ Leap.loop({enableGestures: true}, function(frame) {
     // Step 12
     if (step[i] === step12) {
     }
+
+    if (congFlag) {
+        congratzText();
+    }
+    
 });
