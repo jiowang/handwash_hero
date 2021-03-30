@@ -306,7 +306,7 @@ step13.img = "<img src = './img/step13.png' width=" + width + " height=" + heigh
 
 function introText() {
     stepOutput.innerHTML = '<span style="font-size: 150%">Please <b style="color: DarkSlateBlue">wet</b> and <b style="color: DarkSlateBlue">soap</b> your hands to get started!</span>' + '<br><br>' +
-                           'This will complete the <b style="color: Salmon">steps 1 and 2</b> out of <b style="color: Salmon">9</b> handwashing steps' + '<br>' +
+                           'This will complete the <b style="color: Salmon">steps 1 and 2</b> out of <b style="color: Salmon">10</b> handwashing steps' + '<br>' +
                            'Follow the instructions from the images to wash your hands correctly' +
                            '<br><br>' + begStep;
 }
@@ -345,10 +345,10 @@ function farHandsText(stepNum) {
     progressbarText(stepNum, "bg-danger");
 }
 
-function resumeText(stepNum) {
+/* function resumeText(stepNum) {
     stepOutput.innerHTML += '<br>' + 'Resuming...' + '<br><br>';
     progressbarText(stepNum);
-}
+} */
 
 function finishText() {
     stepOutput.innerHTML = '<span style="font-size: 150%; color: Orchid">You\'re done! Great job!</span>' + '<br>' + ' Please <span style="color: Navy">rinse and dry</span> your hands!' + '<br><br><br>' + celeb;
@@ -367,11 +367,21 @@ function triggerFireworks() {
     document.getElementById("btn").click();
 }
 
+// Counter for number of steps
+var i = 3;
+
 var congFlag = false;
 let congTime = new easytimer.Timer();
 let randNum = 0;
+let tempStep = 0;
+let tempStepFlag = false;
 
 function congratzText() {
+    if (!tempStepFlag) {
+        tempStep = i;
+        i = 0;
+        tempStepFlag = true;
+    }
     let congMsg = ['<span style="font-size: 150%; color: Orchid">Great job! You\'re doing great!</span>',
                    '<span style="font-size: 150%; color: Navy">Amazing work!</span>',
                    '<span style="font-size: 150%; color: IndianRed">Well done!</span>',
@@ -380,14 +390,13 @@ function congratzText() {
     congTime.start();
     stepOutput.innerHTML = congMsg[randNum] + '<br><br><br>' + smile + '<br>';
     if (congTime.getTimeValues().seconds > 3) {
+        i = tempStep;
+        tempStepFlag = false;
         congTime = new easytimer.Timer();
         congFlag = false;
         randNum = Math.floor(Math.random() * 5);
     }
 }
-
-// Counter for number of steps
-var i = 3;
 
 introText();
 
@@ -416,10 +425,11 @@ Leap.loop({enableGestures: true}, function(frame) {
             i++;
         }
         // Text displays
-        if (step3.delayTimeFlag) {
+        if (step3.start) {
             stepText(3);
         }
-        if (step3.startTimeFlag && step3.delayTime.getTimeValues().seconds >= 2) {
+
+        if (step3.startTimeFlag) {
             step3.startTime.start();
             timeRemainText(3);
             progressbarText(3);
@@ -431,22 +441,15 @@ Leap.loop({enableGestures: true}, function(frame) {
                 congFlag = true;
             }
         }
-        if (step3.delayTimeFlag && step3.delayTime.getTimeValues().seconds < 2) {
-            step3.delayTime.start();
-            resumeText(3);
-        }
+
         // Check if palms are close or not
         if (step3State(frame)) {
             step3.start = true;
-            if (!step3.delayTimeFlag) {
-                step3.delayTime.start();
-                step3.delayTimeFlag = true;
-                step3.startTime.start({countdown: true, startValues: {seconds: 8}});
-                step3.startTimeFlag = true;
-            }
+            step3.startTime.start({countdown: true, startValues: {seconds: 6}});
+            step3.startTimeFlag = true;
+
         } else if (step3.start && step3far(frame)) {
             step3.startTime.pause();
-            step3.delayTime.reset();
             farHandsText(3);
         }
     }
@@ -456,10 +459,9 @@ Leap.loop({enableGestures: true}, function(frame) {
             i++;
         }
         // Text displays
-        //if (step4.delayTimeFlag) {
-            stepText(4);
-        //}
-        if (step4.startTimeFlag && step4.delayTime.getTimeValues().seconds >= 2) {
+        stepText(4);
+
+        if (step4.startTimeFlag) {
             step4.startTime.start();
             timeRemainText(4);
             progressbarText(4);
@@ -471,22 +473,14 @@ Leap.loop({enableGestures: true}, function(frame) {
                 congFlag = true;
             }
         }
-        if (step4.delayTimeFlag && step4.delayTime.getTimeValues().seconds < 2) {
-            step4.delayTime.start();
-            resumeText(4);
-        }
+
         // Check if palms are close or not
         if (step4State(frame)) {
             step4.start = true;
-            if (!step4.delayTimeFlag) {
-                step4.delayTime.start();
-                step4.delayTimeFlag = true;
-                step4.startTime.start({countdown: true, startValues: {seconds: 8}});
-                step4.startTimeFlag = true;
-            }
+            step4.startTime.start({countdown: true, startValues: {seconds: 6}});
+            step4.startTimeFlag = true;
         } else if (step4.start && step4far(frame)) {
             step4.startTime.pause();
-            step4.delayTime.reset();
             farHandsText(4);
         }
     }
@@ -496,10 +490,9 @@ Leap.loop({enableGestures: true}, function(frame) {
             i++;
         }
         // Text displays
-        //if (step5.delayTimeFlag) {
-            stepText(5);
-        //}
-        if (step5.startTimeFlag && step5.delayTime.getTimeValues().seconds >= 2) {
+        stepText(5);
+
+        if (step5.startTimeFlag) {
             step5.startTime.start();
             timeRemainText(5);
             progressbarText(5);
@@ -511,22 +504,14 @@ Leap.loop({enableGestures: true}, function(frame) {
                 congFlag = true;
             }
         }
-        if (step5.delayTimeFlag && step5.delayTime.getTimeValues().seconds < 2) {
-            step5.delayTime.start();
-            resumeText(5);
-        }
+
         // Check if palms are close or not
         if (step5State(frame)) {
             step5.start = true;
-            if (!step5.delayTimeFlag) {
-                step5.delayTime.start();
-                step5.delayTimeFlag = true;
-                step5.startTime.start({countdown: true, startValues: {seconds: 8}});
-                step5.startTimeFlag = true;
-            }
+            step5.startTime.start({countdown: true, startValues: {seconds: 6}});
+            step5.startTimeFlag = true;
         } else if (step5.start && step5far(frame)) {
             step5.startTime.pause();
-            step5.delayTime.reset();
             farHandsText(5);
         }
     }
@@ -536,10 +521,9 @@ Leap.loop({enableGestures: true}, function(frame) {
             i++;
         }
         // Text displays
-        //if (step6.delayTimeFlag) {
-            stepText(6);
-        //}
-        if (step6.startTimeFlag && step6.delayTime.getTimeValues().seconds >= 2) {
+        stepText(6);
+
+        if (step6.startTimeFlag) {
             step6.startTime.start();
             timeRemainText(6);
             progressbarText(6);
@@ -551,22 +535,14 @@ Leap.loop({enableGestures: true}, function(frame) {
                 congFlag = true;
             }
         }
-        if (step6.delayTimeFlag && step6.delayTime.getTimeValues().seconds < 2) {
-            step6.delayTime.start();
-            resumeText(6);
-        }
+
         // Check if palms are close or not
         if (step6State(frame)) {
             step6.start = true;
-            if (!step6.delayTimeFlag) {
-                step6.delayTime.start();
-                step6.delayTimeFlag = true;
-                step6.startTime.start({countdown: true, startValues: {seconds: 8}});
-                step6.startTimeFlag = true;
-            }
+            step6.startTime.start({countdown: true, startValues: {seconds: 6}});
+            step6.startTimeFlag = true;
         } else if (step6.start && step6far(frame)) {
             step6.startTime.pause();
-            step6.delayTime.reset();
             farHandsText(6);
         }
     }
@@ -576,10 +552,9 @@ Leap.loop({enableGestures: true}, function(frame) {
             i++;
         }
         // Text displays
-        //if (step7.delayTimeFlag) {
-            stepText(7);
-        //}
-        if (step7.startTimeFlag && step7.delayTime.getTimeValues().seconds >= 2) {
+        stepText(7);
+
+        if (step7.startTimeFlag) {
             step7.startTime.start();
             timeRemainText(7);
             progressbarText(7);
@@ -591,22 +566,14 @@ Leap.loop({enableGestures: true}, function(frame) {
                 congFlag = true;
             }
         }
-        if (step7.delayTimeFlag && step7.delayTime.getTimeValues().seconds < 2) {
-            step7.delayTime.start();
-            resumeText(7);
-        }
+
         // Check if palms are close or not
         if (step7State(frame)) {
             step7.start = true;
-            if (!step7.delayTimeFlag) {
-                step7.delayTime.start();
-                step7.delayTimeFlag = true;
-                step7.startTime.start({countdown: true, startValues: {seconds: 8}});
-                step7.startTimeFlag = true;
-            }
+            step7.startTime.start({countdown: true, startValues: {seconds: 6}});
+            step7.startTimeFlag = true;
         } else if (step7.start && step7far(frame)) {
             step7.startTime.pause();
-            step7.delayTime.reset();
             farHandsText(7);
         }
     }
@@ -616,10 +583,9 @@ Leap.loop({enableGestures: true}, function(frame) {
             i++;
         }
         // Text displays
-        //if (step8.delayTimeFlag) {
-            stepText(8);
-        //}
-        if (step8.startTimeFlag && step8.delayTime.getTimeValues().seconds >= 2) {
+        stepText(8);
+
+        if (step8.startTimeFlag) {
             step8.startTime.start();
             timeRemainText(8);
             progressbarText(8);
@@ -631,22 +597,14 @@ Leap.loop({enableGestures: true}, function(frame) {
                 congFlag = true;
             }
         }
-        if (step8.delayTimeFlag && step8.delayTime.getTimeValues().seconds < 2) {
-            step8.delayTime.start();
-            resumeText(8);
-        }
+
         // Check if palms are close or not
         if (step8State(frame)) {
             step8.start = true;
-            if (!step8.delayTimeFlag) {
-                step8.delayTime.start();
-                step8.delayTimeFlag = true;
-                step8.startTime.start({countdown: true, startValues: {seconds: 8}});
-                step8.startTimeFlag = true;
-            }
+            step8.startTime.start({countdown: true, startValues: {seconds: 6}});
+            step8.startTimeFlag = true;
         } else if (step8.start && step8far(frame)) {
             step8.startTime.pause();
-            step8.delayTime.reset();
             farHandsText(8);
         }
     }
@@ -656,10 +614,8 @@ Leap.loop({enableGestures: true}, function(frame) {
             i++;
         }
         // Text displays
-        //if (step9.delayTimeFlag) {
-            stepText(9);
-        //}
-        if (step9.startTimeFlag && step9.delayTime.getTimeValues().seconds >= 2) {
+        stepText(9);
+        if (step9.startTimeFlag) {
             step9.startTime.start();
             timeRemainText(9);
             progressbarText(9);
@@ -671,22 +627,14 @@ Leap.loop({enableGestures: true}, function(frame) {
                 congFlag = true;
             }
         }
-        if (step9.delayTimeFlag && step9.delayTime.getTimeValues().seconds < 2) {
-            step9.delayTime.start();
-            resumeText(9);
-        }
+
         // Check if palms are close or not
         if (step9State(frame)) {
             step9.start = true;
-            if (!step9.delayTimeFlag) {
-                step9.delayTime.start();
-                step9.delayTimeFlag = true;
-                step9.startTime.start({countdown: true, startValues: {seconds: 8}});
-                step9.startTimeFlag = true;
-            }
+            step9.startTime.start({countdown: true, startValues: {seconds: 6}});
+            step9.startTimeFlag = true;
         } else if (step9.start && step9far(frame)) {
             step9.startTime.pause();
-            step9.delayTime.reset();
             farHandsText(9);
         }
     }
