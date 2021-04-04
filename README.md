@@ -1,10 +1,10 @@
-Handwash Hero, project based on LeapJS using Leap Motion Controller.
+Handwash Hero, a project based on LeapJS using Leap Motion Controller.
 
 (Source: https://github.com/nstrayer/leapD3)
 
 
-The project helps guide the users wash their hands according to the recommended hand washing techniques presented by World Health Organization.
-The handwashing poser from World Health Organization is shown below.
+The project guides handwashing steps according to the recommended hand washing techniques presented by World Health Organization.
+The handwashing poster from World Health Organization is shown below.
 
 ![hand_washing_technique_steps](https://user-images.githubusercontent.com/38937975/113496830-955b6980-94cb-11eb-8d90-ae3953728349.png)
 
