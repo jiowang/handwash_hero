@@ -1,4 +1,4 @@
-Handwash Hero, a project based on LeapJS using Leap Motion Controller.
+Handwash Hero, a project with a group of 4 engineering students based on LeapJS using Leap Motion Controller.
 
 (Source: https://github.com/nstrayer/leapD3)
 
